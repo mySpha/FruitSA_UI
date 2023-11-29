@@ -1,0 +1,26 @@
+[
+    {
+      "categoryId": 1,
+      "name": "Citrus Fruits",
+      "categoryCode": "DEF456",
+      "isActive": false
+    },
+    {
+      "categoryId": 2,
+      "name": "Berries",
+      "categoryCode": "GHI789",
+      "isActive": true
+    },
+    {
+      "categoryId": 3,
+      "name": "Tropical Fruits",
+      "categoryCode": "JKL234",
+      "isActive": false
+    },
+    {
+      "categoryId": 4,
+      "name": "Stone Fruits",
+      "categoryCode": "MNO567",
+      "isActive": true
+    }
+  ]
