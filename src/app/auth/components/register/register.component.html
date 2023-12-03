@@ -1,0 +1,25 @@
+
+<div class="login-container">
+    <div class="login-content">
+        <mat-toolbar class="login-toolbar" color="primary">REGISTER</mat-toolbar>
+        <mat-card>
+            <form [formGroup]="loginForm" 
+                 (ngSubmit)="onSubmit(loginForm)" >
+                <mat-form-field class="mat-form-field">
+                    <mat-icon matPrefix>person_outline</mat-icon>
+                    <input autofocus type="text" matInput placeholder="Username" formControlName="email">
+                </mat-form-field>
+
+                <mat-form-field class="mat-form-field">
+                    <mat-icon matPrefix>lock_outline</mat-icon>
+                    <input type="password" autocomplete="false" matInput placeholder="Password"  formControlName="password">
+                </mat-form-field>
+                
+
+                <button class="mat-raised-button" type="submit" mat-raised-button color="primary">SIGN UP</button>
+    </form>
+    <span> If you're already a user <a routerLink ='/auth/login'>LOGIN</a></span>
+    
+        </mat-card>
+    </div>
+</div>
