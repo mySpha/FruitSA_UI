@@ -1,21 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CategoryRoutingModule } from './category-routing.module';
+import { NgxsModule } from '@ngxs/store';
+import { CategoryState } from '../category-state-manager/category.state';
+import { HttpClientModule } from '@angular/common/http';
+
+import { CategoryDashboardComponent } from '../category-components/category-dashboard/category-dashboard.component';
 import { CategoryDatailsComponent } from '../category-components/category-datails/category-datails.component';
 import { CategoryEditComponent } from '../category-components/category-edit/category-edit.component';
 import { CategoryViewComponent } from '../category-components/category-view/category-view.component';
-import { CategoryRoutingModule } from './category-routing.module';
-
 
 
 @NgModule({
-  declarations: [    
+  declarations: [  
+    CategoryDashboardComponent,  
     CategoryViewComponent,
     CategoryDatailsComponent,
     CategoryEditComponent
   ],
   imports: [
     CommonModule,
-    CategoryRoutingModule
+    CategoryRoutingModule,
+    NgxsModule.forFeature([CategoryState]),
+    HttpClientModule
   ]
 })
 export class CategoryModule { }
