@@ -4,11 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryModule } from './category-page/module/category.module';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material/angular.material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  {path: '', loadChildren:() => import('./category-page/module/category.module').then(m => m.CategoryModule)},
-  {path: '**', redirectTo: ''}
+  {path: 'auth', loadChildren:() => import('./auth/module/auth.module').then(m => m.AuthModule)},
+   {path: 'category', loadChildren:() => import('./category-page/module/category.module').then(m => m.CategoryModule)},
+   {path: '', redirectTo: 'auth', pathMatch: 'full'},
+   {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
@@ -18,7 +25,13 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    CategoryModule
+    NgxsModule.forRoot([]),
+    NgxsLoggerPluginModule.forRoot(),
+    HttpClientModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
