@@ -10,6 +10,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material/angular.material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
 
 const routes: Routes = [
   {path: 'auth', loadChildren:() => import('./auth/module/auth.module').then(m => m.AuthModule)},
@@ -21,6 +22,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    AppToolbarComponent,
   ],
   imports: [
     BrowserModule,
