@@ -2,7 +2,7 @@ import { Category } from "../model/category";
 
 export class GetCategory {
     static readonly type = '[CATEGORY] get all'
-    constructor(public payload: Category){}
+    constructor(){}
 }
 
 export class GetCategoryDetails{

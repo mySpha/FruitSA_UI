@@ -1,6 +1,8 @@
 import { Category } from "../model/category";
 import { Injectable } from "@angular/core";
 import { State,StateContext,Action,Selector } from "@ngxs/store";
+import { GetCategory } from "./category.actions";
+import { CategoryGetService } from "./service/category-get.service";
 
 
 export interface CategoryStateModel{
@@ -9,7 +11,7 @@ export interface CategoryStateModel{
 }
 
 @State<CategoryStateModel>({
-    name: 'category-state',
+    name: 'CategoryState',
     defaults: {
         categories: [],
         category: null
@@ -19,4 +21,25 @@ export interface CategoryStateModel{
 @Injectable()
 export class CategoryState{
 
+    constructor(private service: CategoryGetService){}
+
+    @Selector()
+    public static getAllCategories(state: CategoryStateModel){
+        return state.categories;
+    }
+
+    
+    @Action(GetCategory)
+    getAll({getState,patchState}:StateContext<CategoryStateModel>){
+        const state = getState();
+
+        this.service.category$.subscribe(data => state.categories = data);
+
+        this.service.getCategory();
+
+        patchState({
+            categories: [...state.categories]
+        });
+    }
+    
 }
