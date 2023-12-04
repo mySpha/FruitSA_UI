@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material/angular.material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { CategoryState } from './category-page/category-state-manager/category.state';
 
 const routes: Routes = [
   {path: 'auth', loadChildren:() => import('./auth/module/auth.module').then(m => m.AuthModule)},
@@ -33,7 +35,10 @@ const routes: Routes = [
     BrowserAnimationsModule,
     AngularMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxsStoragePluginModule.forRoot({
+      key: CategoryState
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
