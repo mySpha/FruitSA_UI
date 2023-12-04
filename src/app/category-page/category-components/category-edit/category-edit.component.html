@@ -1,1 +1,32 @@
-<p>category-edit works!</p>
+
+<div class="login-container">
+    <div class="edit-content">
+        <mat-toolbar class="edit-toolbar" color="primary">CATEGORY UPDATE</mat-toolbar>
+        <mat-card>
+            <form [formGroup]="editCategoryForm" 
+                 (ngSubmit)="onSubmit(editCategoryForm)" >
+                <mat-form-field class="mat-form-field">
+                    <mat-label>Category Name</mat-label>
+                    <input autofocus type="text" matInput placeholder="Cateory Name" formControlName="name">
+                </mat-form-field>
+
+                <mat-form-field class="mat-form-field">
+                    <mat-label>Category Code</mat-label>
+                    <input type="text" autocomplete="false" matInput placeholder="categoryCode"  formControlName="categoryCode">
+                </mat-form-field>
+
+                <mat-form-field class="mat-form-field">
+                    <mat-label>Is Active?</mat-label>
+                    <mat-select formControlName="isActive" (selectionChange)="selectionChange($event.value)">
+                      <mat-option *ngFor="let opt of isValidOptions" [value]="opt.value">
+                        {{opt.value}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                <button class="mat-raised-button" type="submit" mat-raised-button color="primary">Update</button>
+    </form>
+    
+        </mat-card>
+    </div>
+</div>
