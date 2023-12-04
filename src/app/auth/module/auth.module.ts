@@ -6,6 +6,8 @@ import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { AuthRoutingModule } from './auth.routing.module';
 import { AuthDashboardComponent } from '../components/auth-dashboard/auth-dashboard.component';
+import { UserState } from '../auth-state-manager/auth.state';
+import { NgxsModule } from '@ngxs/store';
 
 
 
@@ -20,7 +22,8 @@ import { AuthDashboardComponent } from '../components/auth-dashboard/auth-dashbo
     AuthRoutingModule,
     AngularMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxsModule.forFeature([UserState]),
     
   ]
 })
