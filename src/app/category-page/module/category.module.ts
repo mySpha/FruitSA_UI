@@ -9,6 +9,8 @@ import { CategoryDashboardComponent } from '../category-components/category-dash
 import { CategoryDatailsComponent } from '../category-components/category-datails/category-datails.component';
 import { CategoryEditComponent } from '../category-components/category-edit/category-edit.component';
 import { CategoryViewComponent } from '../category-components/category-view/category-view.component';
+import { AngularMaterialModule } from 'src/app/angular-material/angular.material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +24,10 @@ import { CategoryViewComponent } from '../category-components/category-view/cate
     CommonModule,
     CategoryRoutingModule,
     NgxsModule.forFeature([CategoryState]),
-    HttpClientModule
+    HttpClientModule,
+    AngularMaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class CategoryModule { }
