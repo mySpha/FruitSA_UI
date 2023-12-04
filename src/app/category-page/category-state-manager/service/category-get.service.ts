@@ -19,8 +19,7 @@ category$: Observable<Category[]> = this.categorySubject.asObservable();
       headers : new HttpHeaders()
     })
     .pipe(
-      tap(data => {data
-      console.log(data)}),
+      tap(data => {data}),
       catchError(this.handleError<Category[]>())
     )
     .subscribe(results => this.categorySubject.next(results))
