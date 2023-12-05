@@ -1,8 +1,10 @@
 import { Category } from "../model/category";
 import { Injectable } from "@angular/core";
 import { State,StateContext,Action,Selector } from "@ngxs/store";
-import { GetCategory,GetCategoryDetails } from "./category.actions";
+import { AddCategory, GetCategory,GetCategoryDetails, UpdateCategory } from "./category.actions";
 import { CategoryGetService } from "./service/category-get.service";
+import { CategoryUpdateService } from "./service/category-update.service";
+import { CategoryAddService } from "./service/category-add.service";
 
 
 export interface CategoryStateModel{
@@ -21,7 +23,9 @@ export interface CategoryStateModel{
 @Injectable()
 export class CategoryState{
 
-    constructor(private service: CategoryGetService){}
+    constructor(private getService: CategoryGetService,
+                private updateService: CategoryUpdateService,
+                private addService: CategoryAddService){}
 
     @Selector()
     public static getAllCategories(state: CategoryStateModel){
@@ -35,12 +39,12 @@ export class CategoryState{
     
     @Action(GetCategory)
     getAll({patchState}:StateContext<CategoryStateModel>){
-        this.service.category$.subscribe(data =>{
+        this.getService.category$.subscribe(data =>{
             patchState({
                 categories: data
             });
         });
-        this.service.getCategory();
+        this.getService.getCategory();
     }
 
     @Action(GetCategoryDetails)
@@ -48,6 +52,19 @@ export class CategoryState{
         patchState({
             category: payload
         });
+    }
+
+    @Action(UpdateCategory)
+    update({patchState}:StateContext<CategoryStateModel>, {payload}:UpdateCategory){
+            patchState({
+                category: payload
+            });
+        this.updateService.updateCategory(payload);
+    }
+
+    @Action(AddCategory)
+    add({}:StateContext<CategoryStateModel>, {payload}:AddCategory){
+        this.addService.addCategory(payload);
     }
     
 }

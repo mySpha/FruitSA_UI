@@ -2,13 +2,15 @@
 import { Injectable } from "@angular/core";
 import { State,StateContext,Action,Selector } from "@ngxs/store";
 import { User } from "../module/user";
-import { AddUser, GetUser } from "./auth.actions";
+import { AddUser, GetUser,Logout } from "./auth.actions";
 import { AuthGetUserService } from "./service/auth-get-user.service";
+import { AuthAddUserService } from "./service/auth-add-user.service";
+import { Token } from "../model/token";
 
 
 export interface UserStateModel{
-    user: User | null,
-    newUser: User | null
+    user: Token | null,
+    newUser: string | null
 }
 
 @State<UserStateModel>({
@@ -22,7 +24,8 @@ export interface UserStateModel{
 @Injectable()
 export class UserState{
 
-    constructor(private service: AuthGetUserService){}
+    constructor(private loginService: AuthGetUserService,
+        private signUpService: AuthAddUserService){}
 
     @Selector()
     public static getUser(state: UserStateModel){
@@ -35,23 +38,29 @@ export class UserState{
     }
     
     @Action(GetUser)
-    getAll({patchState}:StateContext<UserStateModel>, {payload}:AddUser){
-        this.service.category$.subscribe(data =>{
-            if(data.email != payload.email || data.password != payload.password)
-            {
-                return
-            }
+    get({patchState}:StateContext<UserStateModel>, {payload}:AddUser){
+        this.loginService.user$.subscribe(data =>{
             patchState({
                 user: data
             });
         });
-        this.service.getUser(payload);
+        this.loginService.getUser(payload);
     }
 
     @Action(AddUser)
     getDetails({patchState}:StateContext<UserStateModel>, {payload}:AddUser){
+        this.signUpService.user$.subscribe(data =>{
+            patchState({
+                newUser: data
+            });
+        });
+        this.signUpService.getUser(payload);
+    }
+
+    @Action(Logout)
+    logout({patchState}:StateContext<UserStateModel>){
         patchState({
-            newUser: payload
+            user: null
         });
     }
     

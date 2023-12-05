@@ -1,0 +1,54 @@
+
+
+<div class="add-container">
+    <div class="edit-content">
+        <mat-toolbar class="edit-toolbar" color="primary">EDIT PRODUCT</mat-toolbar>
+        <mat-card>
+            <form [formGroup]="editProductForm" 
+                 (ngSubmit)="onSubmit(editProductForm)" >
+                 
+                <mat-form-field class="mat-form-field">
+                    <input autofocus type="text" required matInput placeholder="Field Name" formControlName="fieldName">
+                    <mat-error *ngIf="editProductForm.get('fieldName')?.hasError('required')">field name is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="mat-form-field">
+                    <input type="text" required autocomplete="false" matInput placeholder="Product Code"  formControlName="productCode">
+                    <mat-error *ngIf="editProductForm.get('productCode')?.hasError('required')">product code is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="mat-form-field">
+                    <input type="text" required autocomplete="false" matInput placeholder="Product Name"  formControlName="name">
+                    <mat-error *ngIf="editProductForm.get('name')?.hasError('required')">name is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="mat-form-field">
+                    <input type="text" required autocomplete="false" matInput placeholder="Product Description"  formControlName="description">
+                </mat-form-field>
+
+                <mat-form-field class="mat-form-field">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="categoryId" (selectionChange)="selectionChange($event.value)">
+                      <mat-option *ngFor="let opt of categoryList" [value]="opt.categoryId">
+                        {{opt.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                <mat-form-field class="mat-form-field">
+                    <input type="text" required autocomplete="false" matInput placeholder="Price"  formControlName="price">
+                    <mat-error *ngIf="editProductForm.get('price')?.hasError('required')">name is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="mat-form-field">
+                    <input type="text" required autocomplete="false" matInput placeholder="Image"  formControlName="image">
+                    <mat-error *ngIf="editProductForm.get('image')?.hasError('required')">name is required</mat-error>
+                </mat-form-field>
+
+                <button class="mat-raised-button" type="submit" mat-raised-button color="primary">UPDATE</button>
+    </form>
+        </mat-card>
+    </div>
+</div>
+
+

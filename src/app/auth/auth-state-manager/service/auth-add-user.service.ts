@@ -11,7 +11,7 @@ export class AuthAddUserService {
 
 
   private userSubject: Subject<string> = new Subject<string>();
-  category$: Observable<string> = this.userSubject.asObservable();
+  user$: Observable<string> = this.userSubject.asObservable();
   
     constructor(private http: HttpClient) { }
   

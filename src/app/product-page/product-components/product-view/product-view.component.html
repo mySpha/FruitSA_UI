@@ -1,0 +1,28 @@
+<h2 class="center">PROCDUCT TABLE</h2>
+<a class="center button" ><span class="material-icons md-48 center" (click)="add()">add</span></a>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="fieldName">
+      <th mat-header-cell *matHeaderCellDef>Field Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.fieldName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="productCode">
+      <th mat-header-cell *matHeaderCellDef>Product Code</th>
+      <td mat-cell *matCellDef="let element">{{ element.productCode }}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Product Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element"><button (click)="onDelete(element.productId)">DELETE</button></td>
+      </ng-container>
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Category Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.category.name }}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="viewProduct(row)"></tr>
+  </table>

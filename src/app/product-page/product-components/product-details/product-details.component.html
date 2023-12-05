@@ -1,0 +1,47 @@
+
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+        <mat-card-title>{{detail?.name}} Details</mat-card-title>
+        <mat-card-content>
+          <div fxLayout="column wrap" fxLayoutGap="40px">
+            
+            <div fxLayout="row wrap" fxFlex>
+              <div fxFlex><strong>Product Field Name</strong></div>
+              <div fxFlex>{{detail?.fieldName}}</div>
+            </div>
+      
+            <div fxLayout="row wrap" fxFlex>
+              <div fxFlex><strong>Product Code</strong></div>
+              <div fxFlex>{{detail?.productCode}}</div>
+            </div>
+      
+            <div fxLayout="row wrap" fxFlex>
+              <div fxFlex><strong>Product Name</strong></div>
+              <div fxFlex>{{detail?.name}}</div>
+            </div>
+      
+            <div fxLayout="row wrap" fxFlex>
+              <div fxFlex><strong>Product Description</strong></div>
+              <div fxFlex>{{detail?.description}}</div>
+            </div>
+      
+            <div fxLayout="row wrap" fxFlex>
+              <div fxFlex><strong>Product Category</strong></div>
+              <div fxFlex>{{detail?.category?.name}}</div>
+            </div>
+      
+            <div fxLayout="row wrap" fxFlex>
+              <div fxFlex><strong>Product Price</strong></div>
+              <div fxFlex>{{detail?.price}}</div>
+            </div>
+      
+            <div fxLayout="row wrap" fxFlex>
+              <div fxFlex><strong>Product Image</strong></div>
+              <div fxFlex>{{detail?.image}}</div>
+            </div>
+
+          </div>
+        </mat-card-content>      
+<button mat-raised-button color="primary" (click)="goToEdit()">EDIT </button>
+      </mat-card>
+</section>

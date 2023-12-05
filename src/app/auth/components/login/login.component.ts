@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { GetUser } from '../../auth-state-manager/auth.actions';
+import { Router } from '@angular/router';
+import { UserState } from '../../auth-state-manager/auth.state';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,8 @@ export class LoginComponent implements OnInit{
   public loginForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private store: Store){}
+              private store: Store,
+              private router: Router){}
   
   ngOnInit(): void {
     this.initializeForm();
@@ -28,7 +31,14 @@ export class LoginComponent implements OnInit{
 
   onSubmit(loginForm : FormGroup){
     if(loginForm.valid){
-      this.store.dispatch(new GetUser(loginForm.value))
+      this.store.dispatch(new GetUser(loginForm.value)).subscribe(()=>{
+        this.store.select(UserState.getUser).subscribe(token =>{
+          if(token){
+            this.router.navigate(['category/summary'])
+          }
+       
+        })
+      })
     }
   }
 }

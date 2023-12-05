@@ -32,7 +32,9 @@ constructor(private store: Store,
     this.store.dispatch(new GetCategoryDetails(category));
     this.router.navigate(['category/detail']);
   }
-
+  add(){
+    this.router.navigate(['category/add'])
+  }
   ngOnDestroy(): void {
     this.sub.unsubscribe()
   }

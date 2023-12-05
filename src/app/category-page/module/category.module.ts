@@ -11,6 +11,7 @@ import { CategoryEditComponent } from '../category-components/category-edit/cate
 import { CategoryViewComponent } from '../category-components/category-view/category-view.component';
 import { AngularMaterialModule } from 'src/app/angular-material/angular.material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CategoryAddComponent } from '../category-components/category-add/category-add.component';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CategoryDashboardComponent,  
     CategoryViewComponent,
     CategoryDatailsComponent,
-    CategoryEditComponent
+    CategoryEditComponent,
+    CategoryAddComponent,
+
   ],
   imports: [
     CommonModule,

@@ -14,3 +14,8 @@ export class UpdateCategory{
     static readonly type = '[CATEGORY] update' 
     constructor(public payload: Category){}
 }
+
+export class AddCategory{
+    static readonly type = '[CATEGORY] add' 
+    constructor(public payload: Category){}
+}

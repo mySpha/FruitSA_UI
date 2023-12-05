@@ -8,11 +8,13 @@
                 <mat-form-field class="mat-form-field">
                     <mat-icon matPrefix>person_outline</mat-icon>
                     <input autofocus required type="text" matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Password is required</mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="mat-form-field">
                     <mat-icon matPrefix>lock_outline</mat-icon>
                     <input required type="password" autocomplete="false" matInput placeholder="Password"  formControlName="password">
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
                 </mat-form-field>
                 
 

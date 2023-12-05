@@ -1,0 +1,25 @@
+
+
+<div class="add-container">
+    <div class="add-content">
+        <mat-toolbar class="add-toolbar" color="primary">ADD CATEGORY</mat-toolbar>
+        <mat-card>
+            <form [formGroup]="addCategoryForm" 
+                 (ngSubmit)="onSubmit(addCategoryForm)" >
+                 
+                <mat-form-field class="mat-form-field">
+                    <input autofocus type="text" required matInput placeholder="Category Name" formControlName="name">
+                    <mat-error *ngIf="addCategoryForm.get('name')?.hasError('required')">name is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="mat-form-field">
+                    <input type="text" required autocomplete="false" matInput placeholder="Category Code"  formControlName="categoryCode">
+                    <mat-error *ngIf="addCategoryForm.get('categoryCode')?.hasError('required')">code is required</mat-error>
+                </mat-form-field>
+
+                <button class="mat-raised-button" type="submit" mat-raised-button color="primary">ADD</button>
+    </form>
+        </mat-card>
+    </div>
+</div>
+

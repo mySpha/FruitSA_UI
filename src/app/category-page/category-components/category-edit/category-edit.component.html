@@ -7,12 +7,14 @@
                  (ngSubmit)="onSubmit(editCategoryForm)" >
                 <mat-form-field class="mat-form-field">
                     <mat-label>Category Name</mat-label>
-                    <input autofocus type="text" matInput placeholder="Cateory Name" formControlName="name">
+                    <input required autofocus type="text" matInput placeholder="Cateory Name" formControlName="name">
+                    <mat-error *ngIf="editCategoryForm.get('name')?.hasError('required')">Password is required</mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="mat-form-field">
                     <mat-label>Category Code</mat-label>
-                    <input type="text" autocomplete="false" matInput placeholder="categoryCode"  formControlName="categoryCode">
+                    <input required type="text" autocomplete="false" matInput placeholder="categoryCode"  formControlName="categoryCode">
+                    <mat-error *ngIf="editCategoryForm.get('categoryCode')?.hasError('required')">Password is required</mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="mat-form-field">

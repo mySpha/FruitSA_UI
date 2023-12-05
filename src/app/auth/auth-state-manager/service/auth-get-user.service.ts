@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, catchError, of, tap } from 'rxjs';
 import { User } from '../../module/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthUrl, BaseUrl } from 'src/environments/environment.development';
+import { AuthUrl, BaseUrl, loginUrl } from 'src/environments/environment.development';
+import { Token } from '../../model/token';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +11,19 @@ import { AuthUrl, BaseUrl } from 'src/environments/environment.development';
 export class AuthGetUserService {
 
 
-  private userSubject: Subject<User> = new Subject<User>();
-  category$: Observable<User> = this.userSubject.asObservable();
+  private userSubject: Subject<Token> = new Subject<Token>();
+  user$: Observable<Token> = this.userSubject.asObservable();
   
     constructor(private http: HttpClient) { }
   
     getUser(user: User) : void {
-      this.http.get<User>(`${AuthUrl}`,{
+      this.http.post<Token>(`${BaseUrl}/${loginUrl}`,user,{
         headers : new HttpHeaders()
       })
       .pipe(
         tap(data => { data
         }),
-        catchError(this.handleError<User>())
+        catchError(this.handleError<Token>())
       )
       .subscribe(results => this.userSubject.next(results))
     }

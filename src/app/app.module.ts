@@ -13,10 +13,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { CategoryState } from './category-page/category-state-manager/category.state';
-
+import { ConfirmLogoutComponent } from './auth/components/confirm-logout/confirm-logout.component';
 const routes: Routes = [
   {path: 'auth', loadChildren:() => import('./auth/module/auth.module').then(m => m.AuthModule)},
    {path: 'category', loadChildren:() => import('./category-page/module/category.module').then(m => m.CategoryModule)},
+   {path: 'product', loadChildren:() => import('./product-page/module/product.module').then(m => m.ProductModule)},
    {path: '', redirectTo: 'auth', pathMatch: 'full'},
    {path: '**', redirectTo: ''}
 ];
@@ -25,6 +26,10 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     AppToolbarComponent,
+    ConfirmLogoutComponent,
+    
+  
+    
   ],
   imports: [
     BrowserModule,
@@ -36,9 +41,6 @@ const routes: Routes = [
     AngularMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxsStoragePluginModule.forRoot({
-      key: CategoryState
-    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
