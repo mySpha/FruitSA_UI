@@ -9,6 +9,7 @@
                     <mat-icon matPrefix>person_outline</mat-icon>
                     <input autofocus required type="text" matInput placeholder="Email" formControlName="email">
                     <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Invalid email</mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="mat-form-field">
