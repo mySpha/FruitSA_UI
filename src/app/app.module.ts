@@ -35,7 +35,7 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     NgxsModule.forRoot([]),
-    NgxsLoggerPluginModule.forRoot(),
+   // NgxsLoggerPluginModule.forRoot(), Use to  see state tree during dev
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
