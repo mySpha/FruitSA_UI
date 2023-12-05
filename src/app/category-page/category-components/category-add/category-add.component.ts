@@ -28,7 +28,10 @@ export class CategoryAddComponent implements OnInit{
     }
 
     onSubmit(addCategoryForm: FormGroup){
-      this.store.dispatch(new AddCategory(addCategoryForm.value))
+      if(addCategoryForm.valid ){
+              this.store.dispatch(new AddCategory(addCategoryForm.value))
       .subscribe(()=>this.router.navigate(['category/summary']))
+      }
+
     }
 }

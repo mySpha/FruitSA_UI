@@ -47,10 +47,13 @@ export class ProductAddComponent implements OnInit{
     }
 
     onSubmit(editProductForm: FormGroup){
-      this.store.dispatch(new AddProduct(editProductForm.value))
+      if(editProductForm.valid){
+          this.store.dispatch(new AddProduct(editProductForm.value))
       .subscribe(()=>{
         this.router.navigate(['product/detail'])})
     }
+      }
+    
 
 }
 
