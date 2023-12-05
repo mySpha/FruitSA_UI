@@ -15,6 +15,7 @@
                     <mat-label>Category Code</mat-label>
                     <input required type="text" autocomplete="false" matInput placeholder="categoryCode"  formControlName="categoryCode">
                     <mat-error *ngIf="editCategoryForm.get('categoryCode')?.hasError('required')">Password is required</mat-error>
+                    <mat-error *ngIf="editCategoryForm.get('categoryCode')?.hasError('invalidCodeFormat')"> Code must start with 3 characters followed by 3 numbers. e.g ABC123</mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="mat-form-field">

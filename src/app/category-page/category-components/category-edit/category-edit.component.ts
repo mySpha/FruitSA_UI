@@ -5,6 +5,7 @@ import { Store } from '@ngxs/store';
 import { CategoryState } from '../../category-state-manager/category.state';
 import { Category } from '../../model/category';
 import { UpdateCategory } from '../../category-state-manager/category.actions';
+import { categoryCodeValidator } from '../../validators/catogory-code.validator';
 
 @Component({
   selector: 'app-category-edit',
@@ -34,7 +35,7 @@ export class CategoryEditComponent implements OnInit{
     this.editCategoryForm = this.fb.group({
       'categoryId': new FormControl(this.category?.categoryId, Validators.required ),
       'name': new FormControl(this.category?.name, Validators.required ),
-      'categoryCode': new FormControl(this.category?.categoryCode, Validators.required),
+      'categoryCode': new FormControl(this.category?.categoryCode, [Validators.required,categoryCodeValidator()]),
       'isActive': new FormControl(this.selected, Validators.required)
     })
   }

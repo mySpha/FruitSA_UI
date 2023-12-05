@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { AddCategory } from '../../category-state-manager/category.actions';
+import { categoryCodeValidator } from '../../validators/catogory-code.validator';
 
 @Component({
   selector: 'app-category-add',
@@ -23,7 +24,7 @@ export class CategoryAddComponent implements OnInit{
     initializeForm(){
       this.addCategoryForm = this.fb.group({
         'name': new FormControl('', Validators.required ),
-        'categoryCode': new FormControl('', Validators.required)
+        'categoryCode': new FormControl('',[Validators.required,categoryCodeValidator()])
       })
     }
 

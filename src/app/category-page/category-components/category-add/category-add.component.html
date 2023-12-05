@@ -15,6 +15,7 @@
                 <mat-form-field class="mat-form-field">
                     <input type="text" required autocomplete="false" matInput placeholder="Category Code"  formControlName="categoryCode">
                     <mat-error *ngIf="addCategoryForm.get('categoryCode')?.hasError('required')">code is required</mat-error>
+                    <mat-error *ngIf="addCategoryForm.get('categoryCode')?.hasError('invalidCodeFormat')"> Code must start with 3 characters followed by 3 numbers. e.g ABC123</mat-error>
                 </mat-form-field>
 
                 <button class="mat-raised-button" type="submit" mat-raised-button color="primary">ADD</button>
