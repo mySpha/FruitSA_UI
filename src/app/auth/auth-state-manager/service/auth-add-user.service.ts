@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, catchError, of, tap } from 'rxjs';
 import { User } from '../../module/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthUrl, BaseUrl } from 'src/environments/environment.development';
+import { BaseUrl, registerUrl } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class AuthAddUserService {
     constructor(private http: HttpClient) { }
   
     getUser(user: User) : void {
-      this.http.post<string>(`${AuthUrl}`,{
+      this.http.post<string>(`${BaseUrl}/${registerUrl}`,user,{
         headers : new HttpHeaders()
       })
       .pipe(
