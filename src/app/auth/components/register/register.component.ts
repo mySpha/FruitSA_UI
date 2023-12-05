@@ -1,9 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AddUser } from '../../auth-state-manager/auth.actions';
-import { UserState } from '../../auth-state-manager/auth.state';
 import { Store } from '@ngxs/store';
 import { Router } from '@angular/router';
+import { passwordValidator } from '../../validators/password.validator';
+
 
 @Component({
   selector: 'app-register',
@@ -24,8 +25,8 @@ export class RegisterComponent implements OnInit{
 
   initializeForm(){
     this.loginForm = this.fb.group({
-      'email': new FormControl(null),
-      'password': new FormControl(null)
+      'email': new FormControl('', Validators.required),
+      'password': new FormControl('', [Validators.required, passwordValidator()])
     })
   }
 

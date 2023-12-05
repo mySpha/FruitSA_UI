@@ -15,6 +15,8 @@
                     <mat-icon matPrefix>lock_outline</mat-icon>
                     <input required type="password" autocomplete="false" matInput placeholder="Password"  formControlName="password">
                     <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('passwordRequirements')">
+                        Password must a minimum of 8 characters with at least special 1 character, 1 number, 1 uppercase </mat-error>
                 </mat-form-field>
                 
 
